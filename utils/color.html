@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			div{
+				margin: 10px auto;
+			}
+			#colDiv{
+				width: 200px;
+				height: 200px;
+				border: solid deepskyblue 1px;
+				border-radius: 100px;
+			}
+			input{
+				width: 40px;
+				height: 20px;
+			}
+			.bqc{
+				margin: 10px auto;
+				display: block;
+				height: 150px;
+				font-size: 20px;
+				line-height: 40px;
+				width: 400px;
+			}
+			.bq{
+				display: inline-block;
+				width: 50px;
+				height: 10px;
+				text-align: center;
+			}
+			button{
+				width: 50px;
+				height: 20px;
+				border-radius: 5px;
+				border: goldenrod inherit 1px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<div id="colDiv"></div>
+			<span class="bqc">
+				<span class="bq">red</span>
+				<input type="range" max="255" min="0" step="1" style="width: 200px;" id="red" onchange="setColor()"/><br />
+				<span><span class="bq">green</span>
+				<input type="range" max="255" min="0" step="1" style="width: 200px;" id="green" onchange="setColor()"/><br />
+				<span><span class="bq">blue</span>
+				<input type="range" max="255" min="0" step="1" style="width: 200px;" id="blue" onchange="setColor()"/><br />
+				<span><span class="bq">a</span>
+				<input type="range" max="1" min="0" step="0.1" style="width: 200px;" id="a" onchange="setColor()"/><br />
+			</span>
+			<span class="bqc">
+				color:
+				<br/><input type="text" readonly="true" id="rgba" style="width: 150px;" ondblclick="rgbCopy()">
+				<br/><input type="text" id="fff" style="width: 150px;" ondblclick="fffCopy()" onchange="setColor2()"> 
+				<br/><input type="text" id="rrr" style="width: 150px;" ondblclick="rrrCopy()"> 
+			</span>
+		</div>
+	</body>
+</html>
+<script type="application/x-javascript">
+	onload = setColor;
+	function setColor(){
+		var r = $('red').value;
+		var g = $('green').value;
+		var b = $('blue').value;
+		var a = $('a').value;
+		var rgba = 'rgba('+r+','+g + ',' + b + ','+ a +')';
+		var fff = '#' + f(r) + f(g) + f(b);
+		$('colDiv').style.backgroundColor = rgba;
+		$('rgba').value = rgba;
+		$('fff').value = fff;
+	}
+	function setColor2(){
+		var fff = $('fff').value;
+		if(fff.length == 3){
+			fff = fff.charAt(0)+fff.charAt(0)+fff.charAt(1)+fff.charAt(1)+fff.charAt(2)+fff.charAt(2);
+		}
+		if(fff.indexOf('#') == -1){
+			fff = '#' + fff;
+		}
+		var rc = parseInt(fff.substr(1,2),16);
+		var gc = parseInt(fff.substr(3,2),16);
+		var bc = parseInt(fff.substr(5,2),16);
+		var rgb = 'rgb('+ rc + ',' + gc + ',' + bc + ')';
+		$('red').value = rc;
+		$('green').value = gc;
+		$('blue').value = bc;
+		$('rrr').value = rgb;
+		setColor();
+	}
+	function $(id){
+		return document.getElementById(id);
+	}
+	function f(val){
+		var s ='000' + parseInt(val).toString(16).toUpperCase();
+		return s.substr(s.length-2,2)
+	}
+	
+	function copyText(val){
+		var inputId = val;
+		function setVal(){
+			document.getElementById(inputId).select();
+			document.execCommand('copy');
+		}
+		return setVal;
+	}
+	var rgbCopy = copyText('rgba');
+	var fffCopy = copyText('fff');
+	var rrrCopy = copyText('rrr');
+</script>

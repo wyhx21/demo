@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>计算器</title>
+		<!--<link rel="stylesheet" href="../css/caculate.css" />-->
+		<script type="text/javascript" src="../js/caculate2.js"></script>
+		<style type="text/css">
+			table {
+				margin: 50px auto;
+				font-size: 22px;
+				border: 5px outset aquamarine;
+			}
+			
+			td {
+				padding: 5px;
+				background-color: #ccc;
+			}
+			
+			#tab-1,
+			#tab-2,
+			#tab-3 {
+				border: 3px outset rgba(15, 10, 10, 0.3);
+			}
+			
+			input {
+				outline: none;
+				box-shadow: 5px 5px 2px rgba(100, 100, 100, 0.8) inset;
+			}
+			
+			[type=button] {
+				width: 60px;
+				height: 40px;
+				border-radius: 5px;
+				background: #fff;
+				color: red;
+				box-shadow: 3px 3px 2px rgba(100, 100, 100, 0.8) inset;
+			}
+			
+			#txtnum {
+				text-align: right;
+				border: 5px solid rgba(100, 100, 100, 0.8);
+				box-shadow: 3px 3px 2px rgba(100, 100, 100, 0.8) inherit;
+				height: 60px;
+				width: 420px;
+				background-color: #fff;
+				font-size: 22px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<table cellspacing="0">
+			<tr>
+				<td colspan="2">
+					<!--<input type="text" name="txtnum" id="txtnum" value="0" />-->
+					<div id="txtnum">0<br/>0</div>
+				</td>
+				<td style="text-align: center;">
+					<input type="button" value="清除" onclick="clearNum()" />
+					<input type="button" value="退格" onclick="backSpace()" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table id="tab-1">
+						<tr>
+							<td><input type="button" value="sin" /></td>
+							<td><input type="button" value="cos" /></td>
+							<td><input type="button" value="tan" /></td>
+						</tr>
+						<tr>
+							<td><input type="button" value="asin" /></td>
+							<td><input type="button" value="acon" /></td>
+							<td><input type="button" value="atan" /></td>
+						</tr>
+						<tr>
+							<td><input type="button" value="PI" /></td>
+							<td><input type="button" value="1/x" /></td>
+							<td><input type="button" value="exp" /></td>
+						</tr>
+						<tr>
+							<td><input type="button" value="Inx" /></td>
+							<td><input type="button" value="Lgx" /></td>
+							<td><input type="button" value="n!" /></td>
+						</tr>
+					</table>
+				</td>
+				<td>
+					<table id="tab-2">
+						<tr>
+							<td><input type="button" value="7" onclick="num(this.value)" /></td>
+							<td><input type="button" value="8" onclick="num(this.value)" /></td>
+							<td><input type="button" value="9" onclick="num(this.value)" /></td>
+						</tr>
+						<tr>
+							<td><input type="button" value="4" onclick="num(this.value)" /></td>
+							<td><input type="button" value="5" onclick="num(this.value)" /></td>
+							<td><input type="button" value="6" onclick="num(this.value)" /></td>
+						</tr>
+						<tr>
+							<td><input type="button" value="1" onclick="num(this.value)" /></td>
+							<td><input type="button" value="2" onclick="num(this.value)" /></td>
+							<td><input type="button" value="3" onclick="num(this.value)" /></td>
+						</tr>
+						<tr>
+							<td><input type="button" value="0" onclick="num(this.value)" /></td>
+							<td><input type="button" value="." onclick="decimal()" /></td>
+							<td><input type="button" value="=" onclick="compute(this.value)" /></td>
+						</tr>
+					</table>
+				</td>
+				<td>
+					<table id="tab-3">
+						<tr>
+							<td><input type="button" value="+" onclick="compute(this.value)" /></td>
+							<td><input type="button" value="取整" onclick="getZnum()" /></td>
+						</tr>
+						<tr>
+							<td><input type="button" value="-" onclick="compute(this.value)" /></td>
+							<td><input type="button" value="取余" onclick="compute('%')" /></td>
+						</tr>
+						<tr>
+							<td><input type="button" value="*" onclick="compute(this.value)" /></td>
+							<td><input type="button" value="x^y" onclick="compute('^')" /></td>
+						</tr>
+						<tr>
+							<td><input type="button" value="/" onclick="compute(this.value)" /></td>
+							<td><input type="button" value="+/-" onclick="numManu()" /></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>
